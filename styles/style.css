@@ -8,9 +8,11 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 10px;
+  background-attachment: fixed;
+  padding: clamp(0.625rem, 0.0286rem + 2.5445vw, 1.25rem);
   font-family: 'IBM Plex mono', sans-serif;
   font-size: 18px;
+  line-height: 23.4px;
   font-weight: normal;
   color: var(--text-color);
 }
@@ -23,6 +25,7 @@
   grid-template-rows: 1fr min-content 1fr;
   align-items: center;
   position: relative;
+  margin-block-end: clamp(2.5rem, 1.3073rem + 5.0891vw, 3.75rem);
 }
 
 .decorated-corners::before {
@@ -85,37 +88,76 @@
   text-transform: lowercase;
   border: 1px solid transparent;
   padding-inline: 13px;
-  cursor: pointer;
 }
 
 .header__theme-menu-button_active {
   border: 1px solid var(--accent-color);
-  pointer-events: none;
 }
 
-.header__theme-menu-button:hover {
+/* .header__theme-menu-button:hover {
   border: 1px solid var(--border-hover-color);
 }
 
-.header__theme-menu-button:focus-visible {
+.header__theme-menu-button:focus {
   outline: none;
   border-bottom: 1px solid var(--accent-color);
-}
+} */
 
 .header__title {
   color: var(--main-color);
-  font-size: 116px;
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
   line-height: 82.5%;
-  text-shadow: 5px 5px var(--accent-color);
+  text-shadow: 4px 4px 0 var(--accent-color);
 }
 
-.accent-text {
+.title-decor {
   background-color: var(--accent-color);
   color: var(--bg-color);
   font-weight: bold;
-  line-height: 23.4px;
 }
 
-.footer {
-  position: relative;
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(3.125rem, 1.3359rem + 7.6336vw, 5rem);;
 }
+
+.section__title {
+  font-size: 18px;
+  color: var(--accent-color);
+  margin-block-end: 20px;
+}
+
+.section__article:not(:last-of-type) {
+  margin-block-end: 20px;
+}
+
+.section__article-title {
+  font-size: 18px;
+  margin-block-end: 10px;
+}
+
+.accent {
+  font-weight: normal;
+}
+
+.article__link {
+  text-decoration: none;
+  text-shadow: 2px 2px 0 var(--accent-color);
+}
+
+.article__link:hover {
+  border-block-end: 1px solid var(--text-color);
+}
+
+.article__link:focus-visible {
+  outline: 1px solid var(--text-color);
+}
+
+/* .footer {
+  position: relative;
+  block-size: 100dvb;
+  min-block-size: 668px;
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  color: var(--main-color);
+} */
