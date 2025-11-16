@@ -2,4 +2,120 @@
 
 .page {
   /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  background-image: var(--cover-image);
+  background-color: var(--bg-color);
+  /* Растянуть изображение на весь .page */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 10px;
+  font-family: 'IBM Plex mono', sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  color: var(--text-color);
+}
+
+.header {
+  block-size: 100dvb;
+  min-block-size: 668px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr min-content 1fr;
+  align-items: center;
+  position: relative;
+}
+
+.decorated-corners::before {
+  content: '';
+  inline-size: 25px;
+  block-size: 25px;
+  border-inline-start: 1px solid var(--accent-color);
+  border-block-end: 1px solid var(--accent-color);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.decorated-corners::after {
+  content: '';
+  inline-size: 25px;
+  block-size: 25px;
+  border-inline-end: 1px solid var(--accent-color);
+  border-block-start: 1px solid var(--accent-color);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.mark {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--accent-color);
+  line-height: 25px;
+  text-transform: uppercase;
+  position: absolute;
+  top: 0;
+  right: 9px;
+}
+
+.mark::after {
+  content: '';
+  inline-size: 9px;
+  block-size: 9px;
+  background-color: var(--accent-color);
+  display: inline-block;
+  border-radius: 50%;
+  box-shadow: 0 0 5px 3px var(--accent-color);
+}
+
+.header__theme-menu {
+  justify-self: end;
+  color: var(--accent-color);
+}
+
+.header__theme-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.header__theme-menu-button {
+  background-color: transparent;
+  text-transform: lowercase;
+  border: 1px solid transparent;
+  padding-inline: 13px;
+  cursor: pointer;
+}
+
+.header__theme-menu-button_active {
+  border: 1px solid var(--accent-color);
+  pointer-events: none;
+}
+
+.header__theme-menu-button:hover {
+  border: 1px solid var(--border-hover-color);
+}
+
+.header__theme-menu-button:focus-visible {
+  outline: none;
+  border-bottom: 1px solid var(--accent-color);
+}
+
+.header__title {
+  color: var(--main-color);
+  font-size: 116px;
+  line-height: 82.5%;
+  text-shadow: 5px 5px var(--accent-color);
+}
+
+.accent-text {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  font-weight: bold;
+  line-height: 23.4px;
+}
+
+.footer {
+  position: relative;
 }
