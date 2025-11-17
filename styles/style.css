@@ -4,12 +4,11 @@
   /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
   background-image: var(--cover-image);
   background-color: var(--bg-color);
-  /* Растянуть изображение на весь .page */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  padding: clamp(0.625rem, 0.0286rem + 2.5445vw, 1.25rem);
+  padding-inline: var(--content-padding);
   font-family: 'IBM Plex mono', sans-serif;
   font-size: 18px;
   line-height: 23.4px;
@@ -24,11 +23,16 @@
   grid-template-columns: 1fr;
   grid-template-rows: 1fr min-content 1fr;
   align-items: center;
-  position: relative;
-  margin-block-end: clamp(2.5rem, 1.3073rem + 5.0891vw, 3.75rem);
+  justify-content: start;
+  padding-block: var(--content-padding);
+  margin-block-end: var(--content-margin);
 }
 
-.decorated-corners::before {
+.decorated-zone {
+  position: relative;
+}
+
+.decorated-zone::before {
   content: '';
   inline-size: 25px;
   block-size: 25px;
@@ -36,17 +40,17 @@
   border-block-end: 1px solid var(--accent-color);
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: var(--content-padding);
 }
 
-.decorated-corners::after {
+.decorated-zone::after {
   content: '';
   inline-size: 25px;
   block-size: 25px;
   border-inline-end: 1px solid var(--accent-color);
   border-block-start: 1px solid var(--accent-color);
   position: absolute;
-  top: 0;
+  top: var(--content-padding);
   right: 0;
 }
 
@@ -58,7 +62,7 @@
   line-height: 25px;
   text-transform: uppercase;
   position: absolute;
-  top: 0;
+  top: var(--content-padding);
   right: 9px;
 }
 
@@ -105,7 +109,7 @@
 
 .header__title {
   color: var(--main-color);
-  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  font-size: var(--main-font-size);
   line-height: 82.5%;
   text-shadow: 4px 4px 0 var(--accent-color);
 }
@@ -119,7 +123,8 @@
 .content {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(3.125rem, 1.3359rem + 7.6336vw, 5rem);;
+  gap: var(--content-gap);
+  margin-block-end: var(--content-margin);
 }
 
 .section__title {
@@ -135,6 +140,14 @@
 .section__article-title {
   font-size: 18px;
   margin-block-end: 10px;
+}
+
+.section__article-title + .section__article-title {
+  margin-block-start: 20px;
+}
+
+.section__article-text + .section__article-text {
+  margin-block-start: 10px;
 }
 
 .accent {
@@ -154,10 +167,39 @@
   outline: 1px solid var(--text-color);
 }
 
-/* .footer {
-  position: relative;
-  block-size: 100dvb;
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.gallery img {
+  inline-size: 100%;
+}
+
+.footer {
+  block-size: 100vb;
   min-block-size: 668px;
-  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.footer__title {
+  font-size: var(--main-font-size);
+  line-height: 82.5%;
   color: var(--main-color);
-} */
+  text-shadow: 2px 2px 0 var(--accent-color);
+}
+
+@media (width>=768px) {
+  .header__about {
+    width: calc((100% - 2 * var(--content-padding)) / 2);
+    justify-self: end;
+  }
+}
+
+@media (width>=1024px) {
+
+}
