@@ -11,7 +11,8 @@
   --bg-color: #000028;
   --border-hover-color: rgba(255 0 112 / 0.4);
   --main-font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  --title-gap: 20px;
   --content-padding: clamp(0.625rem, 0.0286rem + 2.5445vw, 1.25rem);
+  --section-margin: clamp(3.125rem, 1.3359rem + 7.6336vw, 5rem);
   --content-margin: clamp(2.5rem, 1.3073rem + 5.0891vw, 3.75rem);
-  --content-gap: clamp(3.125rem, 1.3359rem + 7.6336vw, 5rem);
 }
