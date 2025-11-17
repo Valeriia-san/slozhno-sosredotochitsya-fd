@@ -1,31 +1,31 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
+  padding-inline: var(--content-padding);
+  color: var(--text-color);
+  font-family: 'IBM Plex mono', sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.3em;
+  background-color: var(--background-color);
   /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
   background-image: var(--cover-image);
-  background-color: var(--bg-color);
-  background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   background-attachment: fixed;
-  padding-inline: var(--content-padding);
-  font-family: 'IBM Plex mono', sans-serif;
-  font-size: 18px;
-  line-height: 23.4px;
-  font-weight: normal;
-  color: var(--text-color);
 }
 
 .header {
-  block-size: 100dvb;
-  min-block-size: 668px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr min-content 1fr;
-  align-items: center;
   justify-content: start;
-  padding-block: var(--content-padding);
+  align-items: center;
   margin-block-end: var(--content-margin);
+  padding-block: var(--content-padding);
+  block-size: 100vb;
+  min-block-size: 668px;
 }
 
 .decorated-zone {
@@ -34,51 +34,51 @@
 
 .decorated-zone::before {
   content: '';
+  position: absolute;
+  bottom: var(--content-padding);
+  left: 0;
+  border-inline-start: 1px solid var(--border-color);
+  border-block-end: 1px solid var(--border-color);
   inline-size: 25px;
   block-size: 25px;
-  border-inline-start: 1px solid var(--accent-color);
-  border-block-end: 1px solid var(--accent-color);
-  position: absolute;
-  left: 0;
-  bottom: var(--content-padding);
 }
 
 .decorated-zone::after {
   content: '';
-  inline-size: 25px;
-  block-size: 25px;
-  border-inline-end: 1px solid var(--accent-color);
-  border-block-start: 1px solid var(--accent-color);
   position: absolute;
   top: var(--content-padding);
   right: 0;
+  border-inline-end: 1px solid var(--border-color);
+  border-block-start: 1px solid var(--border-color);
+  inline-size: 25px;
+  block-size: 25px;
 }
 
 .mark {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  color: var(--accent-color);
-  line-height: 25px;
-  text-transform: uppercase;
   position: absolute;
   top: var(--content-padding);
   right: 9px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent-color);
+  line-height: 1.4em;
+  text-transform: uppercase;
 }
 
 .mark::after {
   content: '';
-  inline-size: 9px;
-  block-size: 9px;
-  background-color: var(--accent-color);
   display: inline-block;
   border-radius: 50%;
   box-shadow: 0 0 5px 3px var(--accent-color);
+  background-color: var(--accent-color);
+  inline-size: 9px;
+  block-size: 9px;
 }
 
 .header__theme-menu {
   justify-self: end;
-  color: var(--accent-color);
+  color: var(--menu-color);
 }
 
 .header__theme-menu-list {
@@ -88,18 +88,15 @@
 }
 
 .header__theme-menu-button {
-  background-color: transparent;
-  text-transform: lowercase;
   border: 1px solid transparent;
   padding-inline: 13px;
+  text-transform: lowercase;
+  background-color: transparent;
 }
 
 .header__theme-menu-button_active {
-  border: 1px solid var(--accent-color);
-}
-
-.header__theme-menu-button:hover {
-  border: 1px solid var(--border-hover-color);
+  border: 1px solid var(--border-color);
+  pointer-events: none;
 }
 
 .header__theme-menu-button:focus {
@@ -107,7 +104,13 @@
 }
 
 .header__theme-menu-button:focus-visible {
-  border-bottom: 1px solid var(--accent-color);
+  outline: none;
+  border-block-end: 1px solid var(--border-color);
+}
+
+.header__theme-menu-button:hover {
+  border: 1px solid var(--border-hover-color);
+  cursor: pointer;
 }
 
 .header__title {
@@ -117,10 +120,10 @@
   text-shadow: 4px 4px 0 var(--accent-color);
 }
 
-.title-decor {
-  background-color: var(--accent-color);
-  color: var(--bg-color);
+.decorated-text {
+  color: var(--decorated-text-color);
   font-weight: bold;
+  background-color: var(--accent-color);
 }
 
 .content {
@@ -135,8 +138,8 @@
 }
 
 .section__title {
+  color: var(--heading-color);
   font-size: 18px;
-  color: var(--accent-color);
 }
 
 .section__article:not(:last-of-type) {
@@ -155,10 +158,6 @@
   margin-block-start: 10px;
 }
 
-.accent {
-  font-weight: normal;
-}
-
 .article__link {
   text-decoration: none;
   text-shadow: 2px 2px 0 var(--accent-color);
@@ -168,47 +167,55 @@
   border-block-end: 1px solid var(--text-color);
 }
 
+.article__link:focus {
+  outline: none;
+}
+
 .article__link:focus-visible {
   outline: 1px solid var(--text-color);
+}
+
+.accent {
+  font-weight: normal;
 }
 
 .gallery {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
   grid-auto-flow: row dense;
+  gap: 10px;
 }
 
 .gallery__image {
+  object-fit: cover;
   inline-size: 100%;
   block-size: 100%;
-  object-fit: cover;
 }
 
 .footer {
-  block-size: 100vb;
-  min-block-size: 668px;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  block-size: 100vb;
+  min-block-size: 668px;
 }
 
 .footer__title {
+  color: var(--main-color);
   font-size: var(--main-font-size);
   line-height: 82.5%;
-  color: var(--main-color);
   text-shadow: 2px 2px 0 var(--accent-color);
 }
 
-@media (width>=768px) {
+@media (width >= 768px) {
   .header__title {
     margin-inline-start: -20px;
   }
-  
+
   .header__about {
-    width: calc(100% / 2);
     justify-self: end;
+    inline-size: calc(100% / 2);
   }
 
   .section {
@@ -219,11 +226,11 @@
     grid-column: 1;
   }
 
-  .article__list {
+  .section__article-list {
     grid-column: 2 / -1;
   }
 
-  .section-reasons .article__list {
+  .large-section .section__article-list {
     grid-column: 1 / -1;
     grid-row: 2;
   }
@@ -257,7 +264,7 @@
   }
 }
 
-@media (width>=1024px) {
+@media (width >= 1024px) {
   .header__theme-menu {
     justify-self: center;
     align-self: start;
@@ -267,7 +274,7 @@
     flex-direction: row;
   }
 
-  .article__list-reasons {
+  .section-reasons {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--title-gap);
