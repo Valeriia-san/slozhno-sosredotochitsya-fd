@@ -1,7 +1,6 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
-  padding-inline: var(--content-padding);
   color: var(--text-color);
   font-family: 'IBM Plex mono', sans-serif;
   font-weight: normal;
@@ -23,7 +22,7 @@
   justify-content: start;
   align-items: center;
   margin-block-end: var(--content-margin);
-  padding-block: var(--content-padding);
+  padding: var(--content-padding);
   block-size: 100vb;
   min-block-size: 668px;
 }
@@ -36,7 +35,7 @@
   content: '';
   position: absolute;
   bottom: var(--content-padding);
-  left: 0;
+  left: var(--content-padding);
   border-inline-start: 1px solid var(--border-color);
   border-block-end: 1px solid var(--border-color);
   inline-size: 25px;
@@ -47,7 +46,7 @@
   content: '';
   position: absolute;
   top: var(--content-padding);
-  right: 0;
+  right: var(--content-padding);
   border-inline-end: 1px solid var(--border-color);
   border-block-start: 1px solid var(--border-color);
   inline-size: 25px;
@@ -57,7 +56,7 @@
 .mark {
   position: absolute;
   top: var(--content-padding);
-  right: 9px;
+  right: calc(9px + var(--content-padding));
   display: flex;
   align-items: center;
   gap: 10px;
@@ -127,6 +126,7 @@
 }
 
 .content {
+  padding-inline: var(--content-padding);
   margin-block-end: var(--content-margin);
 }
 
@@ -193,6 +193,7 @@
 }
 
 .footer {
+  padding-inline: var(--content-padding);
   position: relative;
   display: flex;
   justify-content: center;
@@ -219,7 +220,7 @@
   }
 
   .section {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 2fr;
   }
 
   .section__title {
